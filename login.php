@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['role'] = $user['role'];
         header("Location: index.php");
     } else {
-        echo "Credenziali non valide";
+        echo "Invalid credentials";
     }
 }
 ?>
