@@ -6,7 +6,7 @@ $current = basename($_SERVER['PHP_SELF']);
     <a href="upload.php" style="color:<?php echo $current==='upload.php'?'#fff':'#aaa'; ?>; text-decoration:none; font-weight:<?php echo $current==='upload.php'?'bold':'normal'; ?>;">⬆️ Upload</a>
     <?php if (isset($_SESSION['user_id'])): ?>
         <span style="margin-left:auto; color:#aaa; font-size:13px;">
-            <?php echo htmlspecialchars($_SESSION['username'] ?? ''); ?>
+            <?php echo htmlspecialchars(isset($_SESSION['username']) ? $_SESSION['username'] : ''); ?>
             &nbsp;|&nbsp;
             <a href="logout.php" style="color:#aaa;">Logout</a>
         </span>
