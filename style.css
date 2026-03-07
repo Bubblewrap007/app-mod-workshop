@@ -332,6 +332,8 @@ footer {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    text-align: center;
     padding: 60px 56px;
     background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
 }
@@ -344,8 +346,8 @@ footer {
     margin-bottom: 36px;
     max-width: 420px;
 }
-.hero-features { list-style: none; display: flex; flex-direction: column; gap: 16px; }
-.hero-features li { color: #aab; font-size: 15px; line-height: 1.4; }
+.hero-features { list-style: none; display: flex; flex-direction: column; gap: 16px; align-items: center; }
+.hero-features li { color: #aab; font-size: 15px; line-height: 1.4; text-align: left; }
 .auth-card { border-radius: 0; box-shadow: none; display: flex; flex-direction: column; justify-content: center; min-width: 380px; }
 @media (max-width: 768px) {
     .auth-wrap { flex-direction: column; }
