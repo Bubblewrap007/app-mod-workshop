@@ -43,9 +43,19 @@ $img_url = htmlspecialchars($image['filename']);
             </div>
             <div id="copy-msg" style="display:none; color:#2e7d32; font-size:13px; margin-top:10px;">Copied to clipboard!</div>
             <?php if ($is_admin): ?>
-                <form method="post" action="inappropriate.php" style="margin-top:24px;">
+                <?php if ($image['inappropriate']): ?>
+                    <div class="flagged-notice">🚫 This image is flagged and hidden from regular users.</div>
+                <?php endif; ?>
+                <form method="post" action="inappropriate.php" style="margin-top:16px;">
                     <input type="hidden" name="image_id" value="<?php echo $image['id']; ?>" />
-                    <button type="submit" class="flag-btn"><?php echo $t['flag_inappropriate']; ?></button>
+                    <input type="hidden" name="redirect" value="photo.php?id=<?php echo $image['id']; ?>" />
+                    <?php if ($image['inappropriate']): ?>
+                        <input type="hidden" name="action" value="unflag" />
+                        <button type="submit" class="flag-btn unflag-btn">✓ Restore Image</button>
+                    <?php else: ?>
+                        <input type="hidden" name="action" value="flag" />
+                        <button type="submit" class="flag-btn"><?php echo $t['flag_inappropriate']; ?></button>
+                    <?php endif; ?>
                 </form>
             <?php endif; ?>
         </div>

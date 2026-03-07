@@ -42,9 +42,18 @@ $images = $stmt->fetchAll();
             <div class="caption-text"><?php echo htmlspecialchars($caption); ?></div>
         <?php endif; ?>
         <?php if ($is_admin): ?>
+            <?php if ($image['inappropriate']): ?>
+                <div class="flagged-badge">🚫 Hidden from users</div>
+            <?php endif; ?>
             <form method="post" action="inappropriate.php">
                 <input type="hidden" name="image_id" value="<?php echo $image['id']; ?>" />
-                <button type="submit" class="flag-btn"><?php echo $t['flag_inappropriate']; ?></button>
+                <?php if ($image['inappropriate']): ?>
+                    <input type="hidden" name="action" value="unflag" />
+                    <button type="submit" class="flag-btn unflag-btn">✓ Restore Image</button>
+                <?php else: ?>
+                    <input type="hidden" name="action" value="flag" />
+                    <button type="submit" class="flag-btn"><?php echo $t['flag_inappropriate']; ?></button>
+                <?php endif; ?>
             </form>
         <?php endif; ?>
         </div>

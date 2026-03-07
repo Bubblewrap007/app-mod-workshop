@@ -119,6 +119,56 @@ h1 {
     transition: border-color 0.2s, color 0.2s;
 }
 .image-card .flag-btn:hover { border-color: #e94560; color: #e94560; }
+.image-card .unflag-btn { border-color: #2e7d32; color: #2e7d32; }
+.image-card .unflag-btn:hover { border-color: #1b5e20; color: #1b5e20; }
+.flagged-badge {
+    display: inline-block;
+    background: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffc107;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    margin-top: 8px;
+    letter-spacing: 0.3px;
+}
+.flagged-notice {
+    background: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffc107;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 16px;
+}
+.photo-sidebar .unflag-btn {
+    background: #2e7d32;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.2s;
+}
+.photo-sidebar .unflag-btn:hover { background: #1b5e20; }
+.photo-sidebar .flag-btn {
+    background: none;
+    border: 1px solid #e94560;
+    color: #e94560;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.2s, color 0.2s;
+}
+.photo-sidebar .flag-btn:hover { background: #e94560; color: #fff; }
 
 /* Auth forms (login/register) */
 .auth-wrap {
