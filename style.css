@@ -128,6 +128,13 @@ h1 {
     letter-spacing: 0.8px;
     margin-bottom: 4px;
 }
+.gemini-star {
+    color: #ffd700;
+    -webkit-text-fill-color: #ffd700;
+    text-shadow: 0 0 6px rgba(255, 215, 0, 0.9), 0 0 12px rgba(255, 215, 0, 0.5);
+    display: inline-block;
+    animation: lens-flash 2.4s ease-in-out infinite;
+}
 .caption-text {
     font-size: 13px;
     color: #444;
