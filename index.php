@@ -17,6 +17,7 @@ if ($is_admin) {
 
 $images = $stmt->fetchAll();
 ?>
+<?php include 'navbar.php'; ?>
 <?php include 'lang_switcher.php'; ?>
 
 <h1><?php echo $t['image_catalog']; ?></h1>

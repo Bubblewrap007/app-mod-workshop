@@ -17,6 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['image'])) {
     }
 }
 ?>
+<?php include 'navbar.php'; ?>
 <?php include 'lang_switcher.php'; ?>
 
 <form method="post" enctype="multipart/form-data">
