@@ -26,8 +26,17 @@ $images = $stmt->fetchAll();
     <div>
         <img src="<?php echo $image['filename']; ?>" alt="<?php echo $t['image_alt']; ?>" width="200" />
         <?php if (!empty($image['description'])): ?>
+            <?php
+            $desc = $image['description'];
+            $decoded = json_decode($desc, true);
+            if (is_array($decoded)) {
+                $caption = isset($decoded[$lang]) ? $decoded[$lang] : (isset($decoded['en']) ? $decoded['en'] : reset($decoded));
+            } else {
+                $caption = $desc;
+            }
+            ?>
             <p><strong>Gemini Caption:</strong></p>
-            <p><em><?php echo htmlspecialchars($image['description']); ?></em></p>
+            <p><em><?php echo htmlspecialchars($caption); ?></em></p>
         <?php endif; ?>
         <?php if ($is_admin): ?>
             <form method="post" action="inappropriate.php">

@@ -14,8 +14,13 @@ import vertexai
 from vertexai.generative_models import GenerativeModel, Part
 
 PROJECT_ID    = os.environ.get("PROJECT_ID", "awesome-project-489421")
-GEMINI_MODEL  = "gemini-1.5-flash-002"
-DEFAULT_PROMPT = "Generate a short, descriptive caption for this image."
+GEMINI_MODEL  = "gemini-2.5-flash"
+DEFAULT_PROMPT = (
+    "Generate a short, descriptive caption for this image in each of the following languages. "
+    "Return ONLY a valid JSON object with language codes as keys and captions as values. "
+    "Use these exact keys: en, it, es, fr, de, pt, zh, ja, ar, hi. "
+    "Example format: {\"en\": \"caption\", \"it\": \"didascalia\", ...}"
+)
 
 SUPPORTED_MIME_TYPES = {"image/png", "image/jpeg", "image/gif", "image/webp"}
 
@@ -26,7 +31,11 @@ def gemini_describe_image_from_gcs(gcs_url, mime_type, image_prompt=DEFAULT_PROM
     model = GenerativeModel(GEMINI_MODEL)
     image_part = Part.from_uri(gcs_url, mime_type=mime_type)
     response = model.generate_content([image_part, image_prompt])
-    return response.text.strip()
+    text = response.text.strip()
+    # Strip markdown code fences if present
+    if text.startswith("```"):
+        text = text.split("\n", 1)[-1].rsplit("```", 1)[0].strip()
+    return text
 
 
 def update_db_with_description(image_filename, caption, db_user, db_pass, db_host, db_name):
