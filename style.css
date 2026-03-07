@@ -85,6 +85,7 @@ h1 {
     height: 200px;
     object-fit: cover;
     display: block;
+    cursor: pointer;
 }
 .image-card .card-body { padding: 14px 16px; }
 .image-card .caption-label {

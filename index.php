@@ -24,7 +24,9 @@ $images = $stmt->fetchAll();
 <div class="image-grid">
 <?php foreach ($images as $image): ?>
     <div class="image-card">
-        <img src="<?php echo htmlspecialchars($image['filename']); ?>" alt="<?php echo $t['image_alt']; ?>" />
+        <a href="photo.php?id=<?php echo $image['id']; ?>">
+            <img src="<?php echo htmlspecialchars($image['filename']); ?>" alt="<?php echo $t['image_alt']; ?>" />
+        </a>
         <div class="card-body">
         <?php if (!empty($image['description'])): ?>
             <?php
