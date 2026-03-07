@@ -31,3 +31,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['image'])) {
     </form>
 </div>
 </div>
+<?php include 'footer.php'; ?>

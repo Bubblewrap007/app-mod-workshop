@@ -85,3 +85,4 @@ function copyImage() {
 .btn-copy:hover { background: #c73652; }
 @media (max-width: 700px) { .photo-detail { flex-direction: column; } .photo-sidebar { width: 100%; } }
 </style>
+<?php include 'footer.php'; ?>

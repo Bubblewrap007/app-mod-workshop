@@ -52,3 +52,4 @@ $images = $stmt->fetchAll();
 <?php endforeach; ?>
 </div>
 </div>
+<?php include 'footer.php'; ?>
