@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <?php include 'lang_switcher.php'; ?>
 <div class="auth-wrap">
     <div class="auth-hero">
-        <div class="hero-logo">📷 Amarcord</div>
+        <div class="hero-logo"><span class="hero-logo-icon">📷<span class="brand-flash">✦</span></span> <span class="hero-logo-text">Amarcord</span></div>
         <div class="hero-tagline"><?php echo htmlspecialchars($t['hero_tagline']); ?></div>
         <ul class="hero-features">
             <li><?php echo htmlspecialchars($t['hero_feature_1']); ?></li>
