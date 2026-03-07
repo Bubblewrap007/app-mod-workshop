@@ -23,8 +23,11 @@ steps:
       - '--image=us-central1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/my-php-app:$COMMIT_SHA'
       - '--region=us-central1'
       - '--allow-unauthenticated'
-      - '--set-env-vars=DB_HOST=35.192.15.69,DB_NAME=image_catalog,DB_USER=appmod-phpapp-user,GCS_BUCKET=awesome-project-489421-images'
+      - '--set-env-vars=DB_HOST=35.192.15.69,DB_NAME=image_catalog,DB_USER=appmod-phpapp-user'
       - '--set-secrets=DB_PASS=php-amarcord-db-pass:latest'
+      - '--execution-environment=gen2'
+      - '--add-volume=name=php_uploads,type=cloud-storage,bucket=awesome-project-489421-images'
+      - '--add-volume-mount=volume=php_uploads,mount-path=/var/www/html/uploads/'
 
 images:
   - 'us-central1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/my-php-app:$COMMIT_SHA'

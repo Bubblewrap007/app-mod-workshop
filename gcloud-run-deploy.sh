@@ -15,5 +15,8 @@ gcloud run deploy ${SERVICE_NAME} \
   --project=${PROJECT_ID} \
   --allow-unauthenticated \
   --service-account="${PROJECT_NUMBER}-compute@developer.gserviceaccount.com" \
-  --set-env-vars="DB_HOST=35.192.15.69,DB_NAME=image_catalog,DB_USER=appmod-phpapp-user,GCS_BUCKET=awesome-project-489421-images" \
-  --set-secrets="DB_PASS=php-amarcord-db-pass:latest"
+  --set-env-vars="DB_HOST=35.192.15.69,DB_NAME=image_catalog,DB_USER=appmod-phpapp-user" \
+  --set-secrets="DB_PASS=php-amarcord-db-pass:latest" \
+  --execution-environment=gen2 \
+  --add-volume=name=php_uploads,type=cloud-storage,bucket=awesome-project-489421-images \
+  --add-volume-mount=volume=php_uploads,mount-path=/var/www/html/uploads/
