@@ -34,7 +34,7 @@ $img_url = htmlspecialchars($image['filename']);
         </div>
         <div class="photo-sidebar">
             <?php if ($caption): ?>
-                <div class="caption-label">Gemini Caption</div>
+                <div class="caption-label">✦ Gemini Caption</div>
                 <div class="caption-text" style="font-size:15px; margin-bottom:24px;"><?php echo htmlspecialchars($caption); ?></div>
             <?php endif; ?>
             <div class="photo-actions">

@@ -38,7 +38,7 @@ $images = $stmt->fetchAll();
                 $caption = $desc;
             }
             ?>
-            <div class="caption-label">Gemini Caption</div>
+            <div class="caption-label">✦ Gemini Caption</div>
             <div class="caption-text"><?php echo htmlspecialchars($caption); ?></div>
         <?php endif; ?>
         <?php if ($is_admin): ?>

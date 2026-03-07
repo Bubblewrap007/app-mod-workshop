@@ -97,7 +97,7 @@ h1 {
     cursor: pointer;
 }
 .image-card .card-body { padding: 14px 16px; }
-.image-card .caption-label {
+.caption-label {
     font-size: 11px;
     font-weight: 600;
     color: #e94560;
@@ -105,7 +105,7 @@ h1 {
     letter-spacing: 0.8px;
     margin-bottom: 4px;
 }
-.image-card .caption-text {
+.caption-text {
     font-size: 13px;
     color: #444;
     line-height: 1.5;
