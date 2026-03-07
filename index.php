@@ -10,9 +10,9 @@ if (!isset($_SESSION['user_id'])) {
 $is_admin = ($_SESSION['role'] == 'admin');
 
 if ($is_admin) {
-    $stmt = $pdo->query("SELECT * FROM images");
+    $stmt = $pdo->query("SELECT * FROM images ORDER BY id DESC");
 } else {
-    $stmt = $pdo->query("SELECT * FROM images WHERE inappropriate = 0");
+    $stmt = $pdo->query("SELECT * FROM images WHERE inappropriate = 0 ORDER BY id DESC");
 }
 
 $images = $stmt->fetchAll();
