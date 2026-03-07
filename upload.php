@@ -1,5 +1,6 @@
 <?php
 include 'config.php';
+include 'gcs.php';
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
@@ -7,10 +8,14 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['image'])) {
-    $filename = 'uploads/' . basename($_FILES['image']['name']);
-    if (move_uploaded_file($_FILES['image']['tmp_name'], $filename)) {
+    $objectName = basename($_FILES['image']['name']);
+    $tmpPath    = $_FILES['image']['tmp_name'];
+    $mimeType   = $_FILES['image']['type'];
+
+    if (gcs_upload($gcs_bucket, $objectName, $tmpPath, $mimeType)) {
+        $publicUrl = gcs_public_url($gcs_bucket, $objectName);
         $stmt = $pdo->prepare("INSERT INTO images (user_id, filename) VALUES (?, ?)");
-        $stmt->execute([$_SESSION['user_id'], $filename]);
+        $stmt->execute([$_SESSION['user_id'], $publicUrl]);
         echo $t['image_uploaded'];
     } else {
         echo $t['error_uploading'];

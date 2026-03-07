@@ -34,7 +34,7 @@ RUN sed -i 's/80/${PORT}/g' /etc/apache2/sites-available/000-default.conf /etc/a
 
 # Note: This is quite insecure and opens security breaches. See last chapter for hardening ideas.
 # Uncomment at your own risk:
-#RUN chmod 777 /var/www/html/uploads/
+RUN mkdir -p /var/www/html/uploads && chmod 777 /var/www/html/uploads
 
 # Configure PHP for development.
 # Switch to the production php.ini for production operations.
