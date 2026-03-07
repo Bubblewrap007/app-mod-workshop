@@ -23,6 +23,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <link rel="stylesheet" href="style.css">
 <?php include 'lang_switcher.php'; ?>
 <div class="auth-wrap">
+    <div class="auth-hero">
+        <div class="hero-logo">📷 Amarcord</div>
+        <div class="hero-tagline">The photo catalog that remembers everything —<br>and explains it in any language.</div>
+        <ul class="hero-features">
+            <li>🤖 AI-powered captions in 10 languages, instantly</li>
+            <li>☁️ Cloud-native storage — your photos live forever</li>
+            <li>🌍 Built for a global audience from day one</li>
+        </ul>
+    </div>
     <div class="auth-card">
         <h2>Welcome back</h2>
         <p class="subtitle">Sign in to your account</p>
@@ -37,3 +46,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="alt-link">Don't have an account? <a href="register.php">Register</a></div>
     </div>
 </div>
+<?php include 'footer.php'; ?>
