@@ -1,7 +1,7 @@
 <?php $current = basename($_SERVER['PHP_SELF']); ?>
 <link rel="stylesheet" href="style.css">
 <nav>
-    <span class="brand"><span class="brand-icon">📷</span> <span class="brand-text">Amarcord</span></span>
+    <span class="brand"><span class="brand-icon">📷<span class="brand-flash">✦</span></span> <span class="brand-text">Amarcord</span></span>
     <a href="index.php" <?php if ($current==='index.php') echo 'class="active"'; ?>>Catalog</a>
     <a href="upload.php" <?php if ($current==='upload.php') echo 'class="active"'; ?>>Upload</a>
     <span class="spacer"></span>

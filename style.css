@@ -33,6 +33,25 @@ nav .brand-text {
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
+nav .brand-icon {
+    position: relative;
+    display: inline-block;
+    line-height: 1;
+}
+nav .brand-flash {
+    position: absolute;
+    top: -4px;
+    right: -8px;
+    font-size: 11px;
+    color: #ffd700;
+    -webkit-text-fill-color: #ffd700;
+    line-height: 1;
+    animation: flash-pulse 2s ease-in-out infinite;
+}
+@keyframes flash-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(0.85); }
+}
 nav a {
     color: #aab;
     text-decoration: none;
