@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $image_id = $_POST['image_id'];
     $stmt = $pdo->prepare("UPDATE images SET inappropriate = 1 WHERE id = ?");
     $stmt->execute([$image_id]);
-    echo "Immagine segnalata come inappropriata.";
+    echo $t['image_flagged'];
     header("Location: index.php");
 }
 ?>

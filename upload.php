@@ -11,14 +11,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['image'])) {
     if (move_uploaded_file($_FILES['image']['tmp_name'], $filename)) {
         $stmt = $pdo->prepare("INSERT INTO images (user_id, filename) VALUES (?, ?)");
         $stmt->execute([$_SESSION['user_id'], $filename]);
-        echo "Image uploaded successfully!";
+        echo $t['image_uploaded'];
     } else {
-        echo "Error uploading image.";
+        echo $t['error_uploading'];
     }
 }
 ?>
+<?php include 'lang_switcher.php'; ?>
 
 <form method="post" enctype="multipart/form-data">
     <input type="file" name="image" required />
-    <button type="submit">Upload Image</button>
+    <button type="submit"><?php echo $t['upload_image']; ?></button>
 </form>

@@ -8,15 +8,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt = $pdo->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
     try {
         $stmt->execute([$username, $password]);
-        echo "Registration successful!";
+        echo $t['registration_successful'];
     } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
+        echo $t['error'] . ": " . $e->getMessage();
     }
 }
 ?>
+<?php include 'lang_switcher.php'; ?>
 
 <form method="post">
-    <input type="text" name="username" placeholder="Username" required />
-    <input type="password" name="password" placeholder="Password" required />
-    <button type="submit">Register</button>
+    <input type="text" name="username" placeholder="<?php echo $t['username']; ?>" required />
+    <input type="password" name="password" placeholder="<?php echo $t['password']; ?>" required />
+    <button type="submit"><?php echo $t['register']; ?></button>
 </form>

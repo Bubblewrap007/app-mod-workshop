@@ -14,13 +14,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['role'] = $user['role'];
         header("Location: index.php");
     } else {
-        echo "Invalid credentials";
+        echo $t['invalid_credentials'];
     }
 }
 ?>
+<?php include 'lang_switcher.php'; ?>
 
 <form method="post">
-    <input type="text" name="username" placeholder="Username" required />
-    <input type="password" name="password" placeholder="Password" required />
-    <button type="submit">Login</button>
+    <input type="text" name="username" placeholder="<?php echo $t['username']; ?>" required />
+    <input type="password" name="password" placeholder="<?php echo $t['password']; ?>" required />
+    <button type="submit"><?php echo $t['login']; ?></button>
 </form>

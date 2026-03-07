@@ -17,16 +17,17 @@ if ($is_admin) {
 
 $images = $stmt->fetchAll();
 ?>
+<?php include 'lang_switcher.php'; ?>
 
-<h1>Image Catalog</h1>
+<h1><?php echo $t['image_catalog']; ?></h1>
 
 <?php foreach ($images as $image): ?>
     <div>
-        <img src="<?php echo $image['filename']; ?>" alt="Image" width="200" />
+        <img src="<?php echo $image['filename']; ?>" alt="<?php echo $t['image_alt']; ?>" width="200" />
         <?php if ($is_admin): ?>
             <form method="post" action="inappropriate.php">
                 <input type="hidden" name="image_id" value="<?php echo $image['id']; ?>" />
-                <button type="submit">Flag as Inappropriate</button>
+                <button type="submit"><?php echo $t['flag_inappropriate']; ?></button>
             </form>
         <?php endif; ?>
     </div>
