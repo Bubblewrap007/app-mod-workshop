@@ -1,14 +1,14 @@
-<?php
-$current = basename($_SERVER['PHP_SELF']);
-?>
-<nav style="background:#333; padding:10px 16px; display:flex; align-items:center; gap:16px;">
-    <a href="index.php" style="color:<?php echo $current==='index.php'?'#fff':'#aaa'; ?>; text-decoration:none; font-weight:<?php echo $current==='index.php'?'bold':'normal'; ?>;">📷 Catalog</a>
-    <a href="upload.php" style="color:<?php echo $current==='upload.php'?'#fff':'#aaa'; ?>; text-decoration:none; font-weight:<?php echo $current==='upload.php'?'bold':'normal'; ?>;">⬆️ Upload</a>
+<?php $current = basename($_SERVER['PHP_SELF']); ?>
+<link rel="stylesheet" href="style.css">
+<nav>
+    <span class="brand">📷 Amarcord</span>
+    <a href="index.php" <?php if ($current==='index.php') echo 'class="active"'; ?>>Catalog</a>
+    <a href="upload.php" <?php if ($current==='upload.php') echo 'class="active"'; ?>>Upload</a>
+    <span class="spacer"></span>
     <?php if (isset($_SESSION['user_id'])): ?>
-        <span style="margin-left:auto; color:#aaa; font-size:13px;">
+        <span class="user-info">
             <?php echo htmlspecialchars(isset($_SESSION['username']) ? $_SESSION['username'] : ''); ?>
-            &nbsp;|&nbsp;
-            <a href="logout.php" style="color:#aaa;">Logout</a>
+            &nbsp;|&nbsp;<a href="logout.php">Logout</a>
         </span>
     <?php endif; ?>
 </nav>

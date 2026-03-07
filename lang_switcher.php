@@ -9,6 +9,6 @@ foreach ($languages as $code => $name) {
     }
 }
 ?>
-<div style="text-align:right; padding:6px 12px; background:#f0f0f0; font-size:13px; border-bottom:1px solid #ddd;">
+<div class="lang-bar">
     <?php echo implode(' &nbsp;|&nbsp; ', $lang_links); ?>
 </div>

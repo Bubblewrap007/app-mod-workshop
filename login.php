@@ -11,17 +11,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($user && password_verify($password, $user['password'])) {
         $_SESSION['user_id'] = $user['id'];
+        $_SESSION['username'] = $user['username'];
         $_SESSION['role'] = $user['role'];
         header("Location: index.php");
+        exit;
     } else {
-        echo $t['invalid_credentials'];
+        $login_error = $t['invalid_credentials'];
     }
 }
 ?>
+<link rel="stylesheet" href="style.css">
 <?php include 'lang_switcher.php'; ?>
-
-<form method="post">
-    <input type="text" name="username" placeholder="<?php echo $t['username']; ?>" required />
-    <input type="password" name="password" placeholder="<?php echo $t['password']; ?>" required />
-    <button type="submit"><?php echo $t['login']; ?></button>
-</form>
+<div class="auth-wrap">
+    <div class="auth-card">
+        <h2>Welcome back</h2>
+        <p class="subtitle">Sign in to your account</p>
+        <?php if (isset($login_error)): ?>
+            <div class="error"><?php echo htmlspecialchars($login_error); ?></div>
+        <?php endif; ?>
+        <form method="post">
+            <input type="text" name="username" placeholder="<?php echo $t['username']; ?>" required autofocus />
+            <input type="password" name="password" placeholder="<?php echo $t['password']; ?>" required />
+            <button type="submit"><?php echo $t['login']; ?></button>
+        </form>
+        <div class="alt-link">Don't have an account? <a href="register.php">Register</a></div>
+    </div>
+</div>

@@ -19,12 +19,13 @@ $images = $stmt->fetchAll();
 ?>
 <?php include 'navbar.php'; ?>
 <?php include 'lang_switcher.php'; ?>
-
+<div class="page">
 <h1><?php echo $t['image_catalog']; ?></h1>
-
+<div class="image-grid">
 <?php foreach ($images as $image): ?>
-    <div>
-        <img src="<?php echo $image['filename']; ?>" alt="<?php echo $t['image_alt']; ?>" width="200" />
+    <div class="image-card">
+        <img src="<?php echo htmlspecialchars($image['filename']); ?>" alt="<?php echo $t['image_alt']; ?>" />
+        <div class="card-body">
         <?php if (!empty($image['description'])): ?>
             <?php
             $desc = $image['description'];
@@ -35,14 +36,17 @@ $images = $stmt->fetchAll();
                 $caption = $desc;
             }
             ?>
-            <p><strong>Gemini Caption:</strong></p>
-            <p><em><?php echo htmlspecialchars($caption); ?></em></p>
+            <div class="caption-label">Gemini Caption</div>
+            <div class="caption-text"><?php echo htmlspecialchars($caption); ?></div>
         <?php endif; ?>
         <?php if ($is_admin): ?>
             <form method="post" action="inappropriate.php">
                 <input type="hidden" name="image_id" value="<?php echo $image['id']; ?>" />
-                <button type="submit"><?php echo $t['flag_inappropriate']; ?></button>
+                <button type="submit" class="flag-btn"><?php echo $t['flag_inappropriate']; ?></button>
             </form>
         <?php endif; ?>
+        </div>
     </div>
 <?php endforeach; ?>
+</div>
+</div>
