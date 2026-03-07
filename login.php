@@ -25,16 +25,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <div class="auth-wrap">
     <div class="auth-hero">
         <div class="hero-logo">📷 Amarcord</div>
-        <div class="hero-tagline">The photo catalog that remembers everything —<br>and explains it in any language.</div>
+        <div class="hero-tagline"><?php echo htmlspecialchars($t['hero_tagline']); ?></div>
         <ul class="hero-features">
-            <li>🤖 AI-powered captions in 10 languages, instantly</li>
-            <li>☁️ Cloud-native storage — your photos live forever</li>
-            <li>🌍 Built for a global audience from day one</li>
+            <li><?php echo htmlspecialchars($t['hero_feature_1']); ?></li>
+            <li><?php echo htmlspecialchars($t['hero_feature_2']); ?></li>
+            <li><?php echo htmlspecialchars($t['hero_feature_3']); ?></li>
         </ul>
     </div>
     <div class="auth-card">
-        <h2>Welcome back</h2>
-        <p class="subtitle">Sign in to your account</p>
+        <h2><?php echo htmlspecialchars($t['welcome_back']); ?></h2>
+        <p class="subtitle"><?php echo htmlspecialchars($t['sign_in_subtitle']); ?></p>
         <?php if (isset($login_error)): ?>
             <div class="error"><?php echo htmlspecialchars($login_error); ?></div>
         <?php endif; ?>
@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <input type="password" name="password" placeholder="<?php echo $t['password']; ?>" required />
             <button type="submit"><?php echo $t['login']; ?></button>
         </form>
-        <div class="alt-link">Don't have an account? <a href="register.php">Register</a></div>
+        <div class="alt-link"><?php echo htmlspecialchars($t['no_account']); ?> <a href="register.php"><?php echo $t['register']; ?></a></div>
     </div>
 </div>
 <?php include 'footer.php'; ?>
